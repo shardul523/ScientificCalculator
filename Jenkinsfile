@@ -40,6 +40,13 @@ pipeline {
                 sh "docker push ${DOCKER_IMAGE_NAME}:latest"
             }
         }
+
+        stage('Deploy') {
+            steps {
+                // Run Ansible playbook to deploy the application
+                sh "ansible-playbook -i inventory.ini deploy-calculator.yml"
+            }
+        }
         
     }
     

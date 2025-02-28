@@ -1,0 +1,34 @@
+- name: Deploy Scientific Calculator
+  hosts: calculator_servers
+  become: yes
+  vars:
+    docker_image: sharduldev/scientific-calculator:latest
+    container_name: scientific_calculator
+  
+  tasks:
+    - name: Ensure Docker service is running
+      service:
+        name: docker
+        state: started
+        enabled: yes
+    
+    - name: Pull the latest Docker image
+      docker_image:
+        name: "{{ docker_image }}"
+        source: pull
+        force_source: yes
+    
+    - name: Stop and remove existing container if it exists
+      docker_container:
+        name: "{{ container_name }}"
+        state: absent
+      ignore_errors: yes
+    
+    - name: Run the calculator container
+      docker_container:
+        name: "{{ container_name }}"
+        image: "{{ docker_image }}"
+        state: started
+        interactive: yes
+        tty: yes
+        detach: yes
