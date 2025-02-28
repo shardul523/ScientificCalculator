@@ -11,13 +11,13 @@ public class ScientificCalculator {
         scanner = new Scanner(System.in);
     }
 
-    private double squareRoot(double x) {
+    public double squareRoot(double x) {
         if (x < 0) 
             throw new IllegalArgumentException("Cannot compute square root of a negative number");
         return Math.sqrt(x);
     }
 
-    private long factorial(int x) {
+    public long factorial(int x) {
         if (x < 0) 
             throw new IllegalArgumentException("Cannot compute the factorial of a negative number");
 
@@ -28,14 +28,14 @@ public class ScientificCalculator {
         return fact;
     }
 
-    private double naturalLog(double x) {
+    public double naturalLog(double x) {
         if (x <= 0) 
             throw new IllegalArgumentException("Cannot compute the natural logarithm of a negative number");
 
         return Math.log(x);
     }
 
-    private double power(double x, double b) {
+    public double power(double x, double b) {
         return Math.pow(x, b);
     }
 
@@ -111,6 +111,7 @@ public class ScientificCalculator {
     }
 
     public void run() {
+        scanner.nextLine();
         boolean exited = false;
 
         do {

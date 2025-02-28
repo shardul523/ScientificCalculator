@@ -8,18 +8,31 @@ pipeline {
         DOCKER_IMAGE_TAG = "${env.BUILD_NUMBER}"
     }
     
-    stages {
-        stage('Checkout') {
+    stages {    
+        stage('Clean Workspace') {
             steps {
-                // Get the code from the GitHub repository
-                checkout scm
+                // Clean workspace before checkout
+                cleanWs()
             }
         }
-        
+
         stage('Build') {
             steps {
                 // Build with Maven
                 sh 'mvn clean package'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run tests using Maven
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    // Publish JUnit test results
+                    junit '**/target/surefire-reports/*.xml'
+                }
             }
         }
         
