@@ -1,4 +1,4 @@
-# Use OpenJDK 11 as the base image
+# Use OpenJDK 21 as the base image
 FROM openjdk:21
 
 # Set the working directory
