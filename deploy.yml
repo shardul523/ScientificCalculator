@@ -5,13 +5,7 @@
     docker_image: sharduldev/scientific-calculator:latest
     container_name: scientific_calculator
   
-  tasks:
-    - name: Ensure Docker service is running
-      service:
-        name: docker
-        state: started
-        enabled: yes
-    
+  tasks:    
     - name: Pull the latest Docker image
       docker_image:
         name: "{{ docker_image }}"
