@@ -9,13 +9,6 @@ pipeline {
     }
     
     stages {    
-        stage('Clean Workspace') {
-            steps {
-                // Clean workspace before checkout
-                cleanWs()
-            }
-        }
-
         stage('Build') {
             steps {
                 // Build with Maven
