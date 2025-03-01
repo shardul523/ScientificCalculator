@@ -125,3 +125,11 @@ If you want to manually deploy the application:
    ```
    ansible-playbook -i inventory.ini deploy.yml
    ```
+
+## Running the Calculator
+
+- After either running the pipeline or manual deployment, a container starts in the background.
+- Attach the calculator to the terminal in order to work with the calculator.
+   ```
+   docker attach container_id
+   ```
