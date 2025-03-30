@@ -97,10 +97,10 @@ scientific-calculator/
 2. Update the inventory.ini file with your target servers
 
 ## Running the Pipeline
-
-1. Make changes to the code and push to your Git repository
-2. Jenkins will automatically detect changes and start the pipeline
-3. The pipeline will:
+1. Configure GitHub webhooks with ngrok server
+2. Make changes to the code and push to your Git repository
+3. Jenkins will automatically detect changes and start the pipeline
+4. The pipeline will:
    - Build the Java application with Maven
    - Run JUnit tests
    - Build a Docker image
